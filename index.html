@@ -31,104 +31,105 @@
     <div class="container">
       <!-- Timeblocks go here -->
       <!-- 9am -->
-      <div class="time-block">
+      <div class="container time-block">
         <div class="row">
         <div class="col-1 hour">9AM</div>
-        <textarea class="col-10 description">  
+        <textarea class="col-10 description" id="9">  
         </textarea>
         <button class="saveBtn">
           <i class="far fa-save"></i>
         </button>
-      </div>
+        </div>
       </div>
       <!-- 10am -->
-      <div class="time-block">
+      <div class="container time-block">
         <div class="row">
         <div class="col-1 hour">10AM</div>
-        <textarea class="col-10 description">  
+        <textarea class="col-10 description" id="10">  
         </textarea>
         <button class="saveBtn">
           <i class="far fa-save"></i>
         </button>
-      </div>
+        </div>
       </div>
       <!-- 11am -->
-      <div class="time-block">
+      <div class="container time-block">
         <div class="row">
         <div class="col-1 hour">11AM</div>
-        <textarea class="col-10 description">  
+        <textarea class="col-10 description" id="11">  
         </textarea>
         <button class="saveBtn">
           <i class="far fa-save"></i>
         </button>
-      </div>
+        </div>
       </div>
       <!-- 12pm -->
-      <div class="time-block">
+      <div class="container time-block">
         <div class="row">
         <div class="col-1 hour">12PM</div>
-        <textarea class="col-10 description">  
+        <textarea class="col-10 description" id="12">  
         </textarea>
         <button class="saveBtn">
           <i class="far fa-save"></i>
         </button>
-      </div>
+        </div>
       </div>
       <!-- 1pm -->
-      <div class="time-block">
+      <div class="container time-block">
         <div class="row">
         <div class="col-1 hour">1PM</div>
-        <textarea class="col-10 description">  
+        <textarea class="col-10 description" id="13">  
         </textarea>
         <button class="saveBtn">
           <i class="far fa-save"></i>
         </button>
-      </div>
+        </div>
       </div>
       <!-- 2pm -->
-      <div class="time-block">
+      <div class="container time-block">
         <div class="row">
         <div class="col-1 hour">2PM</div>
-        <textarea class="col-10 description">  
+        <textarea class="col-10 description" id="14">  
         </textarea>
         <button class="saveBtn">
           <i class="far fa-save"></i>
         </button>
-      </div>
+        </div>
       </div>
       <!-- 3pm -->
-      <div class="time-block">
+      <div class="container time-block">
         <div class="row">
         <div class="col-1 hour">3PM</div>
-        <textarea class="col-10 description">  
+        <textarea class="col-10 description" id="15">  
         </textarea>
         <button class="saveBtn">
           <i class="far fa-save"></i>
         </button>
-      </div>
+        </div>
       </div>
       <!-- 4pm -->
-      <div class="time-block">
-        <div class="row">
+       <div class="container time-block">
+         <div class="row">
         <div class="col-1 hour">4PM</div>
-        <textarea class="col-10 description">  
+        <textarea class="col-10 description" id="16">  
         </textarea>
         <button class="saveBtn">
           <i class="far fa-save"></i>
         </button>
-      </div>
+         </div>
       </div>
       <!-- 5pm -->
-      <div class="time-block">
-        <div class="row">
+        <div class="container time-block">
+          <div class="row">
         <div class="col-1 hour">5PM</div>
-        <textarea class="col-10 description">  
+        <textarea class="col-10 description" id="17">  
         </textarea>
         <button class="saveBtn">
           <i class="far fa-save"></i>
         </button>
+        </div>
       </div>
-      </div>
+
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
@@ -136,7 +137,20 @@
     <script>
 
       // vars 
+      var textInput = $("textarea");
+      var saveBtn = $("button");
       var savedTodos = [];
+      var currentHour = moment().hour(); 
+      var textBackground = $("textarea")
+      var hourNine = ($("#9"));
+      var hourTen = ($("#10"));
+      var hourEleven = ($("#11"));
+      var hourTewelve = ($("#12"));
+      var hourThirteen = ($("#13"));
+      var hourFourteen = ($("#14"));
+      var hourFifthteen = ($("#15"));
+      var hourSixteen = ($("#16"));
+      var hourSeventeen = ($("#17"));
 
       // add current date and time to header
       $("#currentDay").append(moment().format('LLLL'));
@@ -144,22 +158,93 @@
       // function readFromLocalStorage()
 
       function readFromLocalStorage() {
+        
+        // var savedTodos = localStorage.getItem(JSON.parse("schedule"));
 
-        for (var i = 0; i < saveTodos.length; i++) {
+        console.log(moment());
+        console.log(moment().hour());
+        console.log(hourNine); 
 
-          var savedTodos = localStorage.getItem(JSON.parse("schedule"));
-
-
-
+        if (currentHour > 9) {
+          hourNine.attr("class", "col-10 description past");
+        } else if (currentHour < 9) {
+          hourNine.attr("class", "col-10 description future");
+        } else {
+          hourNine.attr("class", "col-10 description present");
         }
+
+        if (currentHour > 10) {
+          hourTen.attr("class", "col-10 description past");
+        } else if (currentHour < 10) {
+          hourTen.attr("class", "col-10 description future");
+        } else {
+          hourTen.attr("class", "col-10 description present");
+        }
+
+        if (currentHour > 11) {
+          hourEleven.attr("class", "col-10 description past");
+        } else if (currentHour < 11) {
+          hourEleven.attr("class", "col-10 description future");
+        } else {
+          hourEleven.attr("class", "col-10 description present");
+        }
+
+        if (currentHour > 12) {
+          hourTewelve.attr("class", "col-10 description past");
+        } else if (currentHour < 12) {
+          hourTewelve.attr("class", "col-10 description future");
+        } else {
+          hourTewelve.attr("class", "col-10 description present");
+        }
+
+        if (currentHour > 13) {
+          hourThirteen.attr("class", "col-10 description past");
+        } else if (currentHour < 13) {
+          hourThirteen.attr("class", "col-10 description future");
+        } else {
+          hourThirteen.attr("class", "col-10 description present");
+        }
+
+        if (currentHour > 14) {
+          hourFourteen.attr("class", "col-10 description past");
+        } else if (currentHour < 14) {
+          hourFourteen.attr("class", "col-10 description future");
+        } else {
+          hourFourteen.attr("class", "col-10 description present");
+        }
+        
+        if (currentHour > 15) {
+          hourFifthteen.attr("class", "col-10 description past");
+        } else if (currentHour < 15) {
+          hourFifthteen.attr("class", "col-10 description future");
+        } else {
+          hourFifthteen.attr("class", "col-10 description present");
+        }
+
+        if (currentHour > 16) {
+          hourSixteen.attr("class", "col-10 description past");
+        } else if (currentHour < 16) {
+          hourSixteen.attr("class", "col-10 description future");
+        } else {
+          hourSixteen.attr("class", "col-10 description present");
+        }
+
+        if (currentHour > 17) {
+          hourSeventeen.attr("class", "col-10 description past");
+        } else if (currentHour < 17) {
+          hourSeventeen.attr("class", "col-10 description future");
+        } else {
+          hourSeventeen.attr("class", "col-10 description present");
+        }
+
       }
 	  
 	  // function writeToLocalStorage()
     function writeToLocalStorage(event) {
-      
-
-    
       console.log("click");
+    
+
+
 
 
     };
@@ -171,10 +256,15 @@
 
 	  
 	  // call readFromLocalStorage()
+    readFromLocalStorage();
 
     // button click event listener
-   $(".saveBtn").on("click", function(event) {
+   $(".time-block").on("click", function(event) {
+    if (event.target.className == "saveBtn") {
+    time = this.id;
+    todo = 
      writeToLocalStorage(event);
+    }
    });
    
 	  
