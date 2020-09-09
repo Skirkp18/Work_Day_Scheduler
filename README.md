@@ -1,6 +1,6 @@
 # Work_Day_Scheduler
 
-This is the work day scheduler app for homework 5, Third Part api's.
+This is the work day scheduler app for homework 5, Third Party api's.
 
 GitHub Repository: https://github.com/Skirkp18/Work_Day_Scheduler
 
