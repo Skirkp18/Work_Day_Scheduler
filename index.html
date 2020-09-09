@@ -162,9 +162,7 @@
         for (i = 0; i < 8; i++) {
           var todoText = localStorage.getItem(i);
           var todoBox = textInput[i];
-          console.log(textInput[i]);
           todoBox.textContent = todoText;
-          
           }
 
 
@@ -244,18 +242,8 @@
 	  
 	  // function writeToLocalStorage()
     function writeToLocalStorage(event) {
-      console.log("click");
-      console.log(todos);
-      console.log(block);
-
       localStorage.setItem(block, todos);
-
     };
-
-      
-
-
-
 
 	  
 	  // call readFromLocalStorage()
@@ -266,8 +254,6 @@
     if (event.target.className == "saveBtn") {
     block = this.id;
     todos = event.target.previousElementSibling.value;
-
-
      writeToLocalStorage(event);
     }
    });
